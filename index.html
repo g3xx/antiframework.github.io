@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!--[if lt IE 9]>
+        <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Membuat Framewrok PHP dengan Component framework lain. dan membuat micro Framework.">
+        <meta name="keyword" content="Framework PHP, Micro framework, PHP, Membuat Framework,">
+        
+        
+        <link rel="shortcut icon" href="img/favicon.ico">
+        <title>AntiFramework</title>
+        <link rel="stylesheet" href="css/theme.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css">
+        <script src="js/theme.js" defer></script>
+      
+        <script> var base_url = "." </script>
+        <script src="search/main.js" defer></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+<body>
+    <header class="header">
+        <a id="nav-toggle" class="pizza">&#9776;</a>
+        <div class="title">
+            <a href="/" class="logo">AntiFramework </a>
+             
+                <img alt="GitHub" src="https://flat.badgen.net/github/license/g3xx/antiFramework">
+                <a href="https://github.com/g3xx/antiFramework" target="_blank">
+                <img alt="GitHub stars" src="https://img.shields.io/github/stars/g3xx/antiFramework?style=social" class="stars">
+                </a>
+            
+            <div role="search" class="search">
+                <form><input type="search" placeholder="Search docs" id="mkdocs-search-query" /></form>
+            </div>
+        </div>
+         <a id="nav-scrh" class="scrh">&#8981;</a>
+    </header>
+    <div class="side" id="side">
+        <h2>Page</h2>
+        <ul>
+         
+              <!--
+
+-->
+
+<li class="active">
+    <a href=".">Membuat Framework PHP dengan standard PSR (Component)</a>
+</li>
+
+         
+        </ul>
+          <h2>Table Of Contents</h2>
+          <ul id="toc" class="current">
+            
+              <li><a href="#membuat-framework-php-dengan-standard-psr-component">Membuat Framework PHP dengan standard PSR (Component)</a></li>
+              
+                  <li class="child"><a href="#php-feature">PHP Feature</a></li>
+              
+                  <li class="child"><a href="#1-membuat-project-composer-init">1. Membuat Project (Composer Init)</a></li>
+              
+                  <li class="child"><a href="#2-membuat-auto-loader-psr-4-class">2. Membuat Auto Loader (PSR-4) Class</a></li>
+              
+                  <li class="child"><a href="#3-class-controller">3. Class Controller</a></li>
+              
+                  <li class="child"><a href="#4-error-handler">4. Error Handler</a></li>
+              
+                  <li class="child"><a href="#5-router">5. Router</a></li>
+              
+                  <li class="child"><a href="#6-dispatching-class">6. Dispatching Class</a></li>
+              
+                  <li class="child"><a href="#7-http">7. HTTP</a></li>
+              
+                  <li class="child"><a href="#8-dependency-injection-di">8. Dependency Injection (DI)</a></li>
+              
+                  <li class="child"><a href="#9-templating-engine">9. Templating Engine</a></li>
+              
+                  <li class="child"><a href="#10-implementasi-pdo-orm">10. Implementasi PDO / ORM</a></li>
+              
+            
+              <li><a href="#referensi-inspirasi-dokumentasi">Referensi / Inspirasi (Dokumentasi)</a></li>
+              
+                  <li class="child"><a href="#-referensi-dokumentasi-components">- Referensi Dokumentasi components</a></li>
+              
+                  <li class="child"><a href="#-inspirasi">- Inspirasi</a></li>
+              
+                  <li class="child"><a href="#-tentang-saya">- Tentang Saya</a></li>
+              
+                  <li class="child"><a href="#-donasi">- Donasi</a></li>
+              
+                  <li class="child"><a href="#-penutup">- Penutup</a></li>
+              
+            
+        </ul>
+        <div class="about">
+            <hr/>
+            Built with 🛠 <a href="https://www.mkdocs.org">MkDocs</a> - 
+            Theme 🖤 <a href="https://github.com/g3xx/mkdocs-github">Github</a>.
+        </div>
+    </div>
+    <div class="spacer"><!-- i am margin --></div>
+    <div class="markdown-body">
+      
+      <div class="clear"></div>
+    <div id="mkdocs-search-results"></div>
+
+      
+        <div id="body">
+            <h1 id="membuat-framework-php-dengan-standard-psr-component">Membuat Framework PHP dengan standard PSR (Component)</h1>
+<p>Bissmilahhiromanhirom, bingung mau buat judul apa, berlebihan sebenernya kalo membuat framework. Karena pada tutorial ini hanya mengunakan <strong>Component</strong> yang sudah ada dari berbagai Framework. Hinga menjadi layak nya Framework dengan code standart <strong>PSR</strong>. ,</p>
+<p>sebelum memulai harus sudah terinstall di pc kalian.</p>
+<ol>
+<li>PHP harus versi 7.3.x atau di atas nya (saya menggunakan v 7.3)</li>
+<li>Apache atau Nginx ( saya menggunakan Apache )</li>
+<li>OOP basic</li>
+<li>composer sudah terinstall</li>
+<li>Texteditor Sesuai selera.</li>
+</ol>
+<p>daftar isi Tutorial ini:</p>
+<ol>
+<li>Composer init ( Mebuat Project )</li>
+<li>Auto Loader (PSR-4)</li>
+<li>Class Controller</li>
+<li>Error Handler  </li>
+<li>Router</li>
+<li>Dispatching Class</li>
+<li>HTTP  </li>
+<li>DI (Dependency Injection)</li>
+<li>Templating Engine</li>
+<li>Implementasi PDO / ORM</li>
+<li>Referensi / Inspirasi (Dokumentasi)</li>
+</ol>
+<h2 id="php-feature"><strong>PHP Feature</strong></h2>
+<p>seiring nya waktu, pemograman PHP banyak menambahkan feature. Hingga sekarang php sudah update hingga PHP 7.x. Banyak sekali feature keren di PHP 7 yang hampir mirip mengikuti coding style seperti JAVA. Seperti <strong>Implementation of Type Declarations,</strong> </p>
+<p>contoh :
+- Scalar type declarations :
+  - function jumlah(int ..$nilai)
+- Return type declarations :
+  - function hallo(string $nama, int $umur) : String {}
+- Strict type-declaration :
+  - declare(strict_types=1);</p>
+<p>dan masih banyak lagi, bisa kalian baca di <a href="https://www.php.net/manual/en/migration70.new-features.php">Disini</a> untuk lebih detail contoh penulisan code dan fungsi nya. </p>
+<blockquote>
+<p><strong>Apa itu PSR</strong>
+PSR atau PHP Standars Recommendation sebuah group yang bernama FIG (Framework Interoperability Group) mereka group yang secara tidak langsung ikut dalam pengembangan berbagai Framework yang berdasarkan voting dari para member dan menerapkan untuk penulisan standart code. Hingga sampai saat ini PSR sudah sampai  <strong>PSR-19</strong>. Lebih jelas bisa lihat di sini.  <a href="https://en.wikipedia.org/wiki/PHP_Standard_Recommendation">Wikipedia</a></p>
+</blockquote>
+<h2 id="1-membuat-project-composer-init"><strong>1. Membuat Project (Composer Init)</strong></h2>
+<p>Jika server local sudah siap saat nya kita membuat project dengan composer.  Buka cmd, dan pindahkan path ke Document Root. buat lah folder dengan nama <strong>Framework</strong> atau apalah. 
+Lalu ketikan <code>composer init</code>. Enter enter aja sampai selesei.</p>
+<h2 id="2-membuat-auto-loader-psr-4-class"><strong>2. Membuat Auto Loader (PSR-4) Class</strong></h2>
+<p>Selanjut nya kita membuat folder <strong>src</strong> dan <strong>public</strong> di dalam folder Framework. Setelah itu  buka file <strong>composer.json</strong> dan tambakan code ini setelah require.   </p>
+<pre><code>&quot;autoload&quot;: {
+        &quot;psr-4&quot;: {
+          &quot;Framework\\&quot;: &quot;src/&quot;
+       }
+}
+</code></pre>
+
+<p>lalu kita simpan. Buka Cmd dan ketikan <code>composer dump-autoload</code> Nanti akan muncul sebuah folder bernama <strong>vendor.</strong> Untuk sampai saat ini kita masih tahap persiapan project. Dan untuk lebih detail soal PSR-4 bisa di bisa baca artikal mas ganteng ini di <a href="https://medium.com/easyread/memahami-konsep-psr-4-autoloading-pada-php-ba6cdefe068b">Medium</a>.</p>
+<p>Selanjut kita buat 2 buah file <strong>.htaccess</strong> di folder Framework Dan Public. Dan isi code ini untuk file .htaccess di folder Framework.</p>
+<pre><code>&lt;IfModule mod_rewrite.c&gt;
+    RewriteEngine On
+    RewriteRule ^$ public/ [L]
+    RewriteRule (.*) public/$1 [L]
+&lt;/IfModule&gt;
+</code></pre>
+
+<p>dan code ini untuk file .htaccess di folder public.</p>
+<pre><code>&lt;IfModule mod_rewrite.c&gt;
+    RewriteEngine On
+    RewriteBase /framework
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [QSA,L]
+&lt;/IfModule&gt;
+</code></pre>
+
+<p>oia, 1 lagi buat file <strong>index.php</strong> di public isi kan code ini.</p>
+<pre><code class="php">&lt;?php declare(strict_types = 1);
+ini_set('display_errors', &quot;1&quot;);
+
+echo &quot;Heloo Indonesia&quot;;
+</code></pre>
+
+<p>skrang kita coba Buka di Browser <a href="http://localhost/framework/"><strong>http://localhost/framework/</strong></a> maka muncul tulisan 'hello indonesia'
+NB: Jika kalian membuat project tanpa subdirectory. Hapus nama framework di file <strong>.htaccess</strong> bagian <code>RewriteBase /framework</code> menjadi <code>RewriteBase /</code> atau sesuai nama folder yg kalian buat.</p>
+<h2 id="3-class-controller"><strong>3. Class Controller</strong></h2>
+<p>buat lah folder <strong>Controller</strong> di dalam folder <strong>src</strong> dan buat lah file Class bernama <strong>HeroCtrl.php</strong> di dalam folder <strong>Controller</strong> dan isi kan kode ini.</p>
+<pre><code class="php">&lt;?php declare(strict_types = 1);
+
+namespace Framework\Controller;
+
+class HeroCtrl {
+
+function __construct(){
+    // nanti lanjut
+    }
+
+    public function heroIndex() {
+        echo &quot;Semua Jagoan ..&quot;;
+    }
+
+    public function heroByid($param) {
+        echo &quot;cari jagoan by id &quot; .$param['id'];
+    }
+
+    public function heroByName($param) {
+        echo &quot;cari jagoan by nama &quot; .$param['name'];
+    }
+}
+</code></pre>
+
+<p>Mau di ganti nama folder lain juga gpp, cuma agar mudah di pahami aja. Kelak nanti kalo ada yg ngelanjutin codingan nya.<br />
+Lanjut kita buka file <strong>index.php</strong> dan mencoba mengunakan Class <strong>HeroCtrl</strong> yang baru saja di buat di folder Controller. Kita akan mengunakan <strong>USE</strong> untuk memanggil Class tersebut.</p>
+<pre><code class="php">&lt;?php declare(strict_types = 1);
+
+use Framework\Controller\HeroCtrl;
+
+$hero = new HeroCtrl;
+$hero-&gt;heroIndex();
+</code></pre>
+
+<p>ketika di jalankan akan Error. Karena fungsi file autoload.php nya belum ter include.
+Skrang tambah kan <strong>require <strong>DIR</strong> .'/../vendor/autoload.php';</strong> di bawah use. Dan save lalu refresh kembali browser nya.  Dan ini lah fungsi dari <strong>PSR-4</strong>. Tanpa harus include file nya. Class nya sudah bisa dapat di panggil. </p>
+<h2 id="4-error-handler">4. <strong>Error Handler</strong></h2>
+<p>Dalam nulis code tak luput dari sebuah kesalahan, layak nya aku yang tak bisa mendapatkan mu . Wokwokwo 🤣😭 dalam penulisan code terkadang lupa sama semicolon, variable typo. Dll.  banyak masalah yg akan di tempuh seperti dia yang salah  memilih orang lain dari pada aku. 😫😭🤣 . oke kali ini kita akan mengunakan component yang sudah bertebaran di public. Dan kita akan menginstall Component Error Handler.  Fungsi nya untuk apa ? Untuk menampilkan error PHP nya agar Keren. Macam kaya Framework Laravel.  Ini 5 Component Error Handler popular.</p>
+<ol>
+<li><strong><a href="https://github.com/filp/whoops">whoops</a></strong></li>
+<li><strong><a href="https://tracy.nette.org/">nette\Tracy</a></strong> </li>
+<li><strong><a href="https://github.com/JosephLenton/PHP-Error">PHP-Error</a></strong></li>
+<li><strong><a href="http://phpdebugbar.com/">phpdebugbar</a></strong> </li>
+<li><strong><a href="https://symfony.com/doc/current/components/error_handler.html">symfony\errorhandler</a></strong></li>
+</ol>
+<p>dan untuk tutorial ini kita akan menggunakan <strong>whoops</strong> sebagai error handler nya. Karena 1 alasan. Keren tampilan nya kalo error. Wkwkwk. Kaya Laravel. Dan Stars di github nya paling banyak di antara component yg lain. Oke skrang kita install woops nya dengan mengetikan ini <code>composer require filp/whoops</code> di cmd. Setelah sudah ter install. Saat nya implemenatasi Class nya di project kita. Buat lah File <strong>bootstrap.php</strong> di folder <strong>src.</strong> Lalu buka file <strong>index.php</strong> Dengan kode ini. Agar class nya dapat bekerja.</p>
+<p><strong>Index.php</strong></p>
+<pre><code class="php">&lt;?php declare(strict_types = 1);
+
+ini_set('display_errors', &quot;1&quot;);
+
+require __DIR__ . '/../src/bootstrap.php';
+</code></pre>
+
+<p><strong>bootstrap.php</strong></p>
+<pre><code class="php">&lt;?php declare(strict_types = 1);
+
+namespace Framework;
+
+require __DIR__ .'/../vendor/autoload.php';
+/**
+\* Error Handler Register ( basic )
+*/
+$whoops = new \Whoops\Run;
+$whoops-&gt;pushHandler(new \Whoops\Handler\PrettyPageHandler);
+$whoops-&gt;register();
+throw new \Exception;
+</code></pre>
+
+<p>Sekrang refresh page nya, akan muncul Bidarari cantik yang datang menghampiri mu. 😍😘</p>
+<h2 id="5-router"><strong>5. Router</strong></h2>
+<p>Gimana ya cara penyampain nya. Agar mudah di pahami. Googling aja deh mendingan kalian. Wkwkwk. Router di sini akan bekerja sebagai mengatur sebuah url pada project kita. Dan untuk menghandle semua Request HTTP pada project. Sebagai contoh. Localhost/home. Link tersebut dapat di akses tanpa harus membuat file <strong>home.php</strong> atau <strong>home.html</strong>. Dan dapat di atur (limit) hanya untuk GET atau hanya POST saja. Selanjutnya kita akan menginstall Component router. 5 component Router yg Populer.</p>
+<ol>
+<li><strong><a href="https://github.com/nikic/FastRoute">FastRoute</a></strong></li>
+<li><strong><a href="https://github.com/mrjgreen/phroute">phroute</a></strong> </li>
+<li><strong><a href="https://github.com/klein/klein.php">Klein.php</a></strong></li>
+<li><strong><a href="https://github.com/c9s/Pux">Pux</a></strong></li>
+<li><strong><a href="https://symfony.com/doc/current/components/routing.html">symfony\routing</a></strong></li>
+</ol>
+<p>kita akan mengunakan <strong>Fastroute</strong> sebagai handler router nya. Karena 1 Fast ! Dan banyak component lain yang mengunakan Fastroute sebagai codebase nya, contoh <strong>Slim</strong>. Skrang kita akan install fastroute nya dengan mengetikan  <code>composer require nikic/fast-route</code> di cmd kalian. Jika selesei proses install nya, lanjut buka texteditor.  Buka file <strong>bootsrap.php</strong> edit dan tambahkan code ini.  dan buat file <strong>routes.php</strong> di folder <strong>src</strong> yang nanti nya agar mudah di definisikan router nya. </p>
+<script src="https://gist.github.com/g3xx/aa3763bd796735568df2fec93bc0563f.js"></script>
+
+<p>coba kalian refresh lagi browser nya dan jika bershasil maka tidak akan error, dan coba tambahkan kata sesudah link index. Contoh <strong>http://localhost/framework/keren</strong> . Sedikit penjelasan. Ini hanya untuk mecoba router menghandler function. Masalah nya gimana kalo kita nanti punya banyak router, dan ga mungkin kita akan membuat handler function di file <strong>routes.php</strong>. 😵🥴 untuk mengatasi nya kita akan mengunakan <strong>Dispatch Class</strong> yg akan kita bahas di sesion selanjutnya.</p>
+<h2 id="6-dispatching-class"><strong>6. Dispatching Class</strong></h2>
+<p>Seperti yang sudah di bahas di session sebelum nya. Fungsi dispatch Class ini untuk menghandler semua prosess Request <strong>Router</strong> ke <strong>Class</strong> yang sudah kita buat di folder <strong>Controller</strong>. Dengan mendefinisikan Class handler nya di file <strong>routes.php.</strong>  Skrang kalian coba buka file <strong>routes.php</strong> dan definisikan nama Class yg sudah di buat tadi. Ganti menjadi seperti ini.</p>
+<pre><code class="php">&lt;?php declare(strict_types = 1);
+
+return [
+    ['GET', '/framework/', ['Framework\Controller\HeroCtrl','heroIndex'] ],
+    ['GET', '/framework/{id:[0-9]+}', ['Framework\Controller\HeroCtrl','heroById'] ],
+    ['GET', '/framework/name/{name}', ['Framework\Controller\HeroCtrl','heroByName'] ],
+];
+
+</code></pre>
+
+<p>dan rubah file <strong>bootsrap.php</strong> di bagian </p>
+<pre><code class="php">case \FastRoute\Dispatcher::FOUND:
+    $handler = $routeInfo[1][0];
+    $method = $routeInfo[1][1];
+    $vars = $routeInfo[2];
+    $class = new $handler;
+    $class-&gt;$method($vars);
+    break;
+</code></pre>
+
+<p>Skrang coba refresh kembali browser nya. Maka akan menapilkan pesan dari class <strong>Hero</strong> dengan method <strong>heroIndex</strong>. Setelah berhasil. Kalian akan menemukan masalah, Untuk menapilkan kode HTML. Ga mungkin kan kita echo setiap kode HTML di Class yang sudah di buat ? Session selanjut kita akan bahas di sesion Templating.</p>
+<h2 id="7-http"><strong>7. HTTP</strong></h2>
+<p>untuk mempermudah menerima atau Menghandler semua Request dari Client kita membutuhkan Component HTTP untuk memanipulasi Header dan Respone. 5 Component HTTP Populer</p>
+<ol>
+<li><strong><a href="https://github.com/symfony/http-foundation">Symfony\HttpFoundation</a></strong></li>
+<li><strong><a href="https://github.com/php-fig/http-message">psr\http-message</a></strong></li>
+<li><strong><a href="https://github.com/slimphp/Slim-Http">Slim\Http</a></strong></li>
+<li><strong><a href="https://github.com/laminas/laminas-diactoros">Laminas\diactoros</a></strong></li>
+<li><strong><a href="https://doc.nette.org/en/3.0/http-request-response">nette\Http</a></strong></li>
+</ol>
+<p>Kita akan memilih Component dari Symfony, alasan nya document nya jelas. Dan banyak CMS yang menggunakan Component dari Symfony ini. Langsung aja install dengan composer. buka cmd Ketikan <code>composer require symfony/http-foundation</code> Jika sudah ter install kita buka file <strong>bootsrap.php</strong> dahulu untuk meregister Class nya.</p>
+<p>Code <strong>bootstrap.php</strong> dan <strong>HeroCtrl.php</strong>
+<script src="https://gist.github.com/g3xx/21f5e49b165f1c30c2fb2013c5c38e64.js"></script>
+Sekrang kita buka <strong>Class</strong> di folder controller yang tadi di buat dan kita coba gunakan <strong>Respone</strong> dari component Symfony untuk memanipulasi Header respone nya. Ubah file <strong>HeroCtrl.php</strong> menjadi seperti ini.</p>
+<p>Coba resfresh page nya, Maka akan ketemu Mantan yg lagi jalan sama pacar baru nya. Wkkwk. Slow jangan kesel. Gara” abis liat mantan. Oke skrang kita buka lagi file <strong>bootstrap.php</strong> rubah bagian Dispatch Class nya. Error di karena kan Class <strong>HeroCtrl</strong> mempunyai 2 paramenter (respone dan request). Sedanghkan di Dispatch Class nya. Belum mengunakan paramenter. Jadi masih kosong. Edit Bagian ini.</p>
+<pre><code class="php">    case \FastRoute\Dispatcher::FOUND:
+     $handler = $routeInfo[1][0];
+     $method = $routeInfo[1][1];
+     $vars = $routeInfo[2];
+     $class = new $handler(Response::create(), $request); // param class
+     $class-&gt;$method($vars);
+     break;
+</code></pre>
+
+<p>refresh page nya kembali maka respone header berubah menjadi content type json.</p>
+<h2 id="8-dependency-injection-di"><strong>8. Dependency Injection (DI)</strong></h2>
+<p>dependency injection di php di bagi menjadi 3 cara :
+1. <strong>Constructor Injection</strong>
+2. <strong>Setter Injection</strong>
+3. <strong>Interface Injection</strong></p>
+<p>ada penjeleasan Interface Injection dari mas ganteng ini <a href="https://indocoder.com/oop-php/tutorial-oop-php-bagian-14-dependency-injection/">disini</a>.  mas ganteng itu ngejelasin Interface Injection  bersama sample class nya. Kalo untuk lebih detail nya bisa di lihat. <a href="https://codeinphp.github.io/post/dependency-injection-in-php/">disini</a>. Atau <a href="https://phptherightway.com/#dependency_injection">ini</a>
+Tapi pada tutorial ini kita akan menggunakan cara <strong>Constructor Injection</strong> sebagai jalan untuk meimpletasikan <strong>dependency injection</strong>. Dan seperti biasa kita akan mengunakan component yang sudah ada. Heheh 5 component dependency injection.</p>
+<ol>
+<li><strong><a href="https://github.com/PHP-DI/PHP-DI">PHP-DI</a></strong></li>
+<li><strong><a href="https://github.com/silexphp/Pimple">pimple\pimple</a></strong>  </li>
+<li><strong><a href="https://github.com/thephpleague/ontainer">league\container</a></strong></li>
+<li><strong><a href="https://github.com/rdlowrey/auryn">rdlowrey\auryn</a></strong></li>
+<li><strong><a href="https://github.com/Level-2/Dice">level-2\dice</a></strong></li>
+</ol>
+<p>aku akan memilih km sebagai wanita pilihan ku, karena km sexy, 😍
+kita akan pilih <strong>Dice.php</strong> php karena ada benchmark nya. Dan <strong>Dice.php</strong> single file. Kalao pun mau di ganti nanti nya dengan component lain pun bisa, asal sudah paham dengan cara  <strong>Constructor Injection</strong> karena sistem kerja nya sama, hanya Penullisan nya aja yg beda. Untuk lihat hasil <a href="https://rawgit.com/TomBZombie/php-dependency-injection-benchmarks/master/test1-5_results.html">brenchmark</a>
+Sekrang kita coba install dice nya, buka cmd ketikan. <code>composer require level-2/dice</code> jika selesai download nya, lanjut buat file bernama <strong>dependency.php</strong> di folder <strong>Src.</strong> 
+Dan isikan kode ini.</p>
+<pre><code class="php">&lt;?php declare(strict_types = 1);
+
+$dice = new \Dice\Dice;
+</code></pre>
+
+<p>lanjut kita buka file <strong>bootstrap.php</strong> untuk menganti Dispatch Class nya. Dengan mengunakan <strong>Dice.php</strong> ubah menjadi seperti ini.</p>
+<pre><code class="php">&lt;?php declare(strict_types = 1);
+/* .... */
+    $class = $dice-&gt;create($handler);
+    $response = $class-&gt;$method($vars);
+    if ($response instanceof Response) {
+        $response-&gt;prepare($request)-&gt;send();
+    }
+    break;
+/* .... */
+</code></pre>
+
+<p>Coba di refresh browser kalian. Tidak terjadi Error seperti tadi. Dimana Class HeroCtrl membutuhkan 2 paramenter sebagai default. Its Magic <strong>Constructor Injection.</strong> </p>
+<h2 id="9-templating-engine"><strong>9. Templating Engine</strong></h2>
+<p>sampai disinih kita sudah bisa membuat API yang tidak membutuhkan Engine template. Hanya tinggal menambahkan komponen Query Database aka PDO. Sesion selanjut nya kita akan bahas Implentasikan PDO di Dependency Injection. dengan membuat Class Model.</p>
+<p>Hingga sampai Sesion terakhir. Kita hanya memanfaatkan Component yang sudah Ada di public. Hingga menjadi sebuah Application dengan Code Standard. beberapa Template Engine popular.</p>
+<ol>
+<li><strong><a href="https://twig.symfony.com/doc/3.x/intro.html">Twig</a></strong></li>
+<li><strong><a href="https://github.com/bobthecow/mustache.php">Mustache</a></strong></li>
+<li><strong><a href="https://github.com/jenssegers/blade">Jenssegers\Blade</a></strong></li>
+<li><strong><a href="https://latte.nette.org/en/guide#toc-installation-and-usage">Nette\Latte</a></strong></li>
+<li><strong><a href="https://github.com/smarty-php/smarty">Smarty</a></strong></li>
+<li><strong><a href="https://github.com/thephpleague/plates">Plates</a></strong></li>
+</ol>
+<p>Dalam memilih Engine Template, bikin bingung mau pilih kriteria seperti apa. Bisa dipilih sesuai selera kalian, saran sih yang mudah Tag nya dan dokumentasi nya lengkap,  saya pribadi memilih <strong>Latte</strong> karena penulisan tag nya ga ribet dan document nya easy to read. Tapi pada tutorial ini kita akan memilih <strong>Twig</strong>, karena Populer. Takut nya kalo memlih ga populer ntar kalo stack bingung .😅 <strong>Plates</strong> recomend buat yg suka style php tag di template. Cocok buat yg suka ngoding native. Skrang kita install Twig nya, buka di cmd dan ketikan. <code>composer require "twig/twig:^3.0"</code> .</p>
+<p>pertama kita buat folder baru dengan nama <strong>cache</strong> di folder <strong>framework</strong>, lalu buat folder lagi bernama <strong>Views</strong> di folder <strong>Src</strong> dan ubah file <strong>dependency.php</strong> . jangan bingung ya 😁</p>
+<pre><code class="php">&lt;?php declare(strict_types = 1);
+
+$load = new \Twig\Loader\FilesystemLoader( __DIR__ . '/Views/');
+$rules = [ 
+    'Twig\Environment' =&gt; [
+        'shared' =&gt; true,
+        'constructParams'   =&gt;  [$load, [ 'cache' =&gt; 'false', 'debug' =&gt; 'true']]
+        //'constructParams'   =&gt;  [$load, [ 'cache' =&gt; __DIR__ .'/../cache/']] Enable Cahce
+    ],
+];
+
+
+$dice = new \Dice\Dice;
+$dice = $dice-&gt;addRules($rules);
+</code></pre>
+
+<p>Dalam taham Develop kita disable dulu <strong>cahce</strong> nya, jika sudah siap production tinggal di enable cahce nya. sekrang kita buat file <strong>Render.php</strong> di folder <strong>Src</strong> dan isi kode ini</p>
+<script src="https://gist.github.com/g3xx/b84219f3e341f0ae343e52c317b182b2.js"></script>
+
+<blockquote>
+<p>Class Render mempunyai 2 method <strong>send_html</strong> dan <strong>send_json</strong> </p>
+</blockquote>
+<p>sekrang kita coba buat file <strong>twig</strong> nya untuk di render di folder <strong>Views</strong>. SANGAT DENGAN KERAS DI WAJIBKAN MEMBUAT FOLDER <strong>PARTIALS</strong> DI DALAM FOLDER <strong>VIEWS</strong> !!!! lanjut buat file <strong>base.twig</strong> di folder <strong>Views</strong> dan buat file <strong>head.twig</strong> di folder <strong>partials</strong>
+code untuk <strong>base.twig</strong></p>
+<pre><code class="html">{% include 'partials/head.twig' %}
+&lt;body&gt;
+    &lt;h1&gt;Indonesia Maju..&lt;/h1&gt;
+    &lt;hr/&gt;
+         {% if id %} &lt;h2&gt; Hero by {{ id }} !!&lt;/h2&gt; {% endif %}
+        &lt;a href=&quot;/framework/keren&quot;&gt;Page &lt;/a&gt; . 
+        &lt;a href=&quot;/framework/&quot;&gt;Home &lt;/a&gt; . 
+        &lt;a href=&quot;/framework/name/akujson&quot;&gt; Api Json&lt;/a&gt;
+&lt;/body&gt;
+</code></pre>
+
+<p>code untuk <strong>head.twig</strong></p>
+<pre><code class="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Dari Head.twig&lt;/title&gt;
+    &lt;/head&gt;
+</code></pre>
+
+<p>skrang kita gunakan Class <strong>Render</strong> di Class <strong>HeroCtrl</strong>.  edit Class <strong>HeroCtrl</strong> nya jadi seperti ini.</p>
+<pre><code class="php">&lt;?php declare(strict_types = 1);
+
+namespace Framework\Controller;
+
+use Framework\Render;
+
+class HeroCtrl {
+
+    private $view;
+
+    function __construct(Render $view){
+        $this-&gt;view = $view;
+    }
+
+    public function heroIndex() {
+        $this-&gt;view-&gt;send_html('base.twig');
+    }
+
+    public function heroById($params) {
+        $this-&gt;view-&gt;send_html('base.twig', $params);
+    }
+
+    public function heroByName($params){
+        $this-&gt;view-&gt;send_json($params);
+    }
+}
+</code></pre>
+
+<p>tambah kan <code>['GET', '/framework/name/{name}', ['Framework\Controller\HeroCtrl','heroByName'] ],</code> di file <strong>routes.php</strong>  untuk menthod <strong>loncat</strong>. refresh kembali browser nya. 😎 Di Class Render kita dapat membuat default Header atau Respone dan membuat Function Filter <strong>Twig</strong> . Contoh Membuat Filter Twig di Class <strong>Render.php</strong>.</p>
+<pre><code class="php">/*...*/
+    function __construct(Twig $view, Response $response, Request $request){
+        $this-&gt;view = $view;
+        $this-&gt;request = $request;
+        $this-&gt;response = $response;
+        $this-&gt;init_filter();
+    }
+/*...*/
+    public function init_filter(){
+        $filter = new \Twig\TwigFilter('encrypt',[$this, 'encrypt']);
+        $this-&gt;view-&gt;addFilter($filter);
+    }
+    public function encrypt($str){
+        return base64_encode(base64_encode($str)
+    }
+</code></pre>
+
+<p>code di atas hanya contoh untuk membuat Filter Function di twig, jika Filter lebih banyak bisa di buat kan class sendiri yang nanti nya bisa di Inject di file <strong>Dependency.php</strong>. dan jika mau menganti Template engine nya yang harus di perhatikan adalah Construct di setiap Template Engine nya. karena setiap Class berbeda beda Construct nya. </p>
+<h2 id="10-implementasi-pdo-orm">10. Implementasi PDO / ORM</h2>
+<p>sekarang kita coba Install component PDO Database di Project kita. agar lebih mudah untuk mengakses <strong>Database</strong> tanpa perlu memikiran bug  <strong>SQL Injection</strong>. Cukup dengan kita definisikan di nama table dengan membuat Class Model. Beberapa Component PDO Dabatabase yang Canggih. 😂</p>
+<ol>
+<li><strong><a href="https://github.com/doctrine/dbal">Doctrine\dbal</a></strong></li>
+<li><strong><a href="https://www.phpfastcache.com/">Phpfastcache\phpfastcache</a></strong></li>
+<li><strong><a href="https://github.com/illuminate/database">Illuminate\database</a> (Laravel Punya 😅)</strong></li>
+<li><strong><a href="https://github.com/spotorm/spot2">Spotorm\spot2</a></strong></li>
+<li><strong><a href="https://symfony.com/doc/current/doctrine.html">Symfony\doctrine</a></strong></li>
+</ol>
+<p>Pribadi si mau pilih <strong>Doctrine</strong> karena ada Generator Model Class nya. tapi pada turorial ini kita pilih punya laravel deh, karena sudah banyak yang nulis tentang <strong>Laravel</strong>. Jadi biar mudah aja kalo Stack. kwkw langsung aja install di cmd.</p>
+<p><code>composer require illuminate/database</code></p>
+<p>males banget liat require dev nya banyak banget. 😑 karena ini hanya tutorial tak apa lah. Lanjut buat folder <strong>Models</strong> di folder <strong>src</strong>. nanti nya Class Buat set/get Table Database. yg udah sering pakai Framework bukan hal aneh apa lagi basis Laravel.😚 haha lanjut edit File <strong>dependency.php</strong></p>
+<blockquote>
+<p>Jika ingin mengunakan Feature Seed atau Migrate bisa gunakan <strong><a href="https://github.com/cakephp/phinx">cakephp\phinx</a> </strong></p>
+</blockquote>
+<script src="https://gist.github.com/g3xx/19bd2b662f009e4617b355f420dc47b9.js"></script>
+
+<p>Contoh code Models <strong>Hero.php</strong></p>
+<pre><code class="php">&lt;?php declare(strict_types = 1);
+
+namespace Framework\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Hero extends Model {
+
+   protected $table = &quot;hero&quot;;
+   protected $primaryKey = 'id';
+
+   public function getAll(){
+        return $this-&gt;all();
+   } 
+
+   public function findId($id){
+        return $this-&gt;find($id);
+   }
+
+   /*** laravel style ***/  
+}
+</code></pre>
+
+<p>dan contoh code untuk Controller <strong>HeroCtrl.php</strong></p>
+<pre><code class="php">&lt;?php declare(strict_types = 1);
+
+/***/
+use Framework\Models\Hero;
+
+/***/
+    private $hero;
+
+    function __construct(Render $view){
+
+        $this-&gt;view = $view;
+        $this-&gt;hero = new Hero;
+    }
+
+    public function heroIndex() {
+        $data = $this-&gt;hero-&gt;getAll()-&gt;toArray();
+        $this-&gt;view-&gt;send_html('base.twig', array('result' =&gt; $data) );
+    }
+
+    public function heroById($param) {
+        $data = $this-&gt;hero-&gt;findId($param['id']);
+        $this-&gt;view-&gt;send_json($data-&gt;toArray());
+    }
+
+    public function heroByName($param) {
+        $this-&gt;view-&gt;send_json($param['name']);
+    }
+
+</code></pre>
+
+<p>Refresh Deh, 😎😍🥰🤩😍 Jika langsung mengunakan <strong>Static Method</strong> pun bisa dengan <code>Hero::All</code> di method controller <strong>HeroCtrl.php</strong>. jika kalian mau langsung install semua nya bisa di install langsung di clone.</p>
+<p><code>git clone https://github.com/g3xx/antiFramework.git</code></p>
+<h1 id="referensi-inspirasi-dokumentasi"><strong>Referensi / Inspirasi</strong> (Dokumentasi)</h1>
+<h2 id="-referensi-dokumentasi-components">- Referensi Dokumentasi components</h2>
+<blockquote>
+<p><a href="https://github.com/nikic/FastRoute">Routing Dokumentasi</a></p>
+<p><a href="https://symfony.com/doc/current/components/http_foundation.html">http_foundation Dokumentasi</a></p>
+<p><a href="https://r.je/dice.html">Dice.php</a></p>
+<p><a href="https://twig.symfony.com/doc/3.x/">Twig Dokumentasi</a></p>
+<p><a href="https://laravel.com/docs/6.x/eloquent#eloquent-model-conventions">Eloquent ORM</a></p>
+</blockquote>
+<h2 id="-inspirasi">- Inspirasi</h2>
+<blockquote>
+<p>https://github.com/mmeyer724/Frameworkless/</p>
+<p>https://github.com/PatrickLouys/no-framework-tutorial/</p>
+</blockquote>
+<h2 id="-tentang-saya">- Tentang Saya</h2>
+<blockquote>
+<p>Sesorang lulusan SMK, yang suka ngotodidak sejak 2010 dan sampai sekarang belum pernah bekerja sebagai <s>Developer</s>.😅 </p>
+</blockquote>
+<h2 id="-donasi">- Donasi</h2>
+<blockquote>
+<p>Ga nolak kok di beliin kopi, heheh.. </p>
+</blockquote>
+<h2 id="-penutup">- Penutup</h2>
+<blockquote>
+<p>Jika ada kesalahan dalam penulisan, atau sulit di pahami kata kata saya. mohon dibukaan maaf ya sayang. karena aku tau, bagaimana pun pria itu selalu salah. 😫</p>
+</blockquote>
+        </div>
+      
+      <hr/>
+  <!--
+  MkDocs version      : 1.0.4
+  Docs Build Date UTC : 2020-02-25 04:20:52
+  -->
+</div>
+</body>
+</html>
